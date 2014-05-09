@@ -12,13 +12,15 @@ data[,"Sub_metering_1"]<-as.numeric(as.character(data$Sub_metering_1))
 data[,"Sub_metering_2"]<-as.numeric(as.character(data$Sub_metering_2))
 data[,"Sub_metering_3"]<-as.numeric(as.character(data$Sub_metering_3))
 
+
+png(file = "plot3.png", width = 480, height = 480) 
+
 ##increase the line width slightly
 plot(TotalTime, data$Sub_metering_1, type="l", ylab="Enery sub metering", xlab="", lwd=2)
 par(new=TRUE)
 plot(TotalTime, data$Sub_metering_2, type="l", ylim= range(data$Sub_metering_1), lwd=2, col="red", xlab="", ylab="")
 par(new=TRUE)
 plot(TotalTime, data$Sub_metering_3, type="l", ylim= range(data$Sub_metering_1), lwd=2, col="blue", xlab="", ylab="")
-legend("topright", lty=1, col=c("black", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+legend("topright", lwd=1, col=c("black", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
 
-dev.copy(png, file = "plot2.png", width = 480, height = 480)
 dev.off()
